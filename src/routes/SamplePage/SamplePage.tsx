@@ -17,11 +17,11 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const SampleComponent = lazy(
-  () => import('../../Components/SampleComponent/sample-component')
+  () => import('../../components/SampleComponent/sample-component')
 );
 
 import './sample-page.scss';
-import AppLink from '../../Components/AppLink';
+import AppLink from '../../components/AppLink';
 
 /**
  * A smart component that handles all the api calls and data needed by the dumb components.

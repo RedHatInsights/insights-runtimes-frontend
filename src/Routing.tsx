@@ -1,36 +1,29 @@
 import React, { Suspense, lazy, useMemo } from 'react';
-import { Route as RouterRoute, Routes as RouterRoutes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { InvalidObject } from '@redhat-cloud-services/frontend-components/InvalidObject';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
-const SamplePage = lazy(
+const OopsPage = lazy(
   () =>
     import(
-      /* webpackChunkName: "SamplePage" */ './Routes/SamplePage/SamplePage'
+      /* webpackChunkName: "UnderConstructionPage" */ './routes/OopsPage/OopsPage'
     )
 );
-const OopsPage = lazy(
-  () => import(/* webpackChunkName: "OopsPage" */ './Routes/OopsPage/OopsPage')
-);
-const NoPermissionsPage = lazy(
+const UnderConstructionPage = lazy(
   () =>
     import(
-      /* webpackChunkName: "NoPermissionsPage" */ './Routes/NoPermissionsPage/NoPermissionsPage'
+      /* webpackChunkName: "UnderConstructionPage" */ './routes/UnderConstructionPage/UnderConstructionPage'
     )
 );
 
 const routes = [
   {
-    path: 'no-permissions',
-    element: NoPermissionsPage,
+    path: '/',
+    element: UnderConstructionPage,
   },
   {
     path: 'oops',
     element: OopsPage,
-  },
-  {
-    path: '/',
-    element: SamplePage,
   },
   /* Catch all unmatched routes */
   {
@@ -50,9 +43,9 @@ interface RouteType {
 
 const renderRoutes = (routes: RouteType[] = []) =>
   routes.map(({ path, element: Element, childRoutes, elementProps }) => (
-    <RouterRoute key={path} path={path} element={<Element {...elementProps} />}>
+    <Route key={path} path={path} element={<Element {...elementProps} />}>
       {renderRoutes(childRoutes)}
-    </RouterRoute>
+    </Route>
   ));
 
 const Routing = () => {
@@ -65,7 +58,7 @@ const Routing = () => {
         </Bullseye>
       }
     >
-      <RouterRoutes>{renderedRoutes}</RouterRoutes>
+      <Routes>{renderedRoutes}</Routes>
     </Suspense>
   );
 };
