@@ -82,7 +82,6 @@ const RuntimesProcessesCard = () => {
                       // these are used to make it look more like the pf5 Accordion at the moment
                       justifyContent: 'start',
                       columnGap: 16,
-                      paddingInlineStart: 0,
                     }}
                   >
                     {instance.workload}
