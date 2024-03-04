@@ -1,0 +1,929 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Insights Runtimes Inventory REST API",
+    "version" : "v1"
+  },
+  "paths" : {
+    "/api/runtimes-inventory-service/v1/eap-instance" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "eapInstanceId",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "includeRaw",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-rh-identity",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperEapInstance"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    },
+    "/api/runtimes-inventory-service/v1/eap-instance-ids" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "hostname",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-rh-identity",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperListUUID"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    },
+    "/api/runtimes-inventory-service/v1/eap-instances" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "hostname",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "includeRaw",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-rh-identity",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperListEapInstance"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    },
+    "/api/runtimes-inventory-service/v1/instance" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "jvmInstanceId",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-rh-identity",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperJvmInstance"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    },
+    "/api/runtimes-inventory-service/v1/instance-ids" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "hostname",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-rh-identity",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperListUUID"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    },
+    "/api/runtimes-inventory-service/v1/instances" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "hostname",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-rh-identity",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperListJvmInstance"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    },
+    "/api/runtimes-inventory-service/v1/jarhashes" : {
+      "get" : {
+        "tags" : [ "Display Inventory" ],
+        "parameters" : [ {
+          "name" : "jvmInstanceId",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseWrapperListObject"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not Allowed"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          }
+        },
+        "security" : [ {
+          "SecurityScheme" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "EapConfiguration" : {
+        "required" : [ "version", "launchType", "name", "organization", "processType", "productName", "productVersion", "profileName", "releaseCodename", "releaseVersion", "runningMode", "runtimeConfigurationState", "serverState", "suspendState", "socketBindingGroups", "paths", "interfaces", "coreServices" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUID"
+          },
+          "eapInstance" : {
+            "$ref" : "#/components/schemas/EapInstance"
+          },
+          "extensions" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EapExtension"
+            }
+          },
+          "subsystems" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          },
+          "deployments" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          },
+          "version" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "launchType" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "name" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "organization" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "processType" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "productName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "productVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "profileName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "releaseCodename" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "releaseVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "runningMode" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "runtimeConfigurationState" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "serverState" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "suspendState" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "socketBindingGroups" : {
+            "maxLength" : 1048576,
+            "type" : "string"
+          },
+          "paths" : {
+            "maxLength" : 1048576,
+            "type" : "string"
+          },
+          "interfaces" : {
+            "maxLength" : 1048576,
+            "type" : "string"
+          },
+          "coreServices" : {
+            "maxLength" : 1048576,
+            "type" : "string"
+          }
+        }
+      },
+      "EapDeployment" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUID"
+          },
+          "eapInstance" : {
+            "$ref" : "#/components/schemas/EapInstance"
+          },
+          "name" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "archives" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JarHash"
+            }
+          }
+        }
+      },
+      "EapExtension" : {
+        "required" : [ "module" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUID"
+          },
+          "module" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "subsystems" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/NameVersionPair"
+            }
+          }
+        }
+      },
+      "EapInstance" : {
+        "required" : [ "linkingHash", "orgId", "hostname", "launchTime", "vendor", "versionString", "version", "majorVersion", "osArch", "processors", "heapMin", "heapMax", "details", "created", "javaClassVersion", "javaSpecificationVendor", "javaVendor", "javaVendorVersion", "javaVmName", "javaVmVendor", "jvmHeapGcDetails", "jvmPid", "jvmReportTime", "systemOsName", "systemOsVersion", "javaHome", "javaLibraryPath", "javaCommand", "javaClassPath", "jvmPackages", "jvmArgs", "workload", "isOcp", "appClientException", "appName", "appTransportCertHttps", "appTransportTypeFile", "appTransportTypeHttps", "appUserDir", "appUserName", "eapVersion", "eapXp", "eapYamlExtension", "eapBootableJar", "eapUseGit", "raw" ],
+        "type" : "object",
+        "properties" : {
+          "linkingHash" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "accountId" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "orgId" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "hostname" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "launchTime" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "vendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "versionString" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "version" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "majorVersion" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "osArch" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "processors" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "heapMin" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "heapMax" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : { }
+          },
+          "created" : {
+            "$ref" : "#/components/schemas/ZonedDateTime"
+          },
+          "jarHashes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JarHash"
+            }
+          },
+          "javaClassVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaSpecificationVendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVendorVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVmName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVmVendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "jvmHeapGcDetails" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "jvmPid" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "jvmReportTime" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "systemOsName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "systemOsVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaHome" : {
+            "type" : "string"
+          },
+          "javaLibraryPath" : {
+            "type" : "string"
+          },
+          "javaCommand" : {
+            "type" : "string"
+          },
+          "javaClassPath" : {
+            "type" : "string"
+          },
+          "jvmPackages" : {
+            "type" : "string"
+          },
+          "jvmArgs" : {
+            "type" : "string"
+          },
+          "workload" : {
+            "type" : "string"
+          },
+          "isOcp" : {
+            "type" : "boolean"
+          },
+          "ocp" : {
+            "type" : "boolean"
+          },
+          "id" : {
+            "$ref" : "#/components/schemas/UUID"
+          },
+          "jars" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JarHash"
+            }
+          },
+          "modules" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JarHash"
+            }
+          },
+          "configuration" : {
+            "$ref" : "#/components/schemas/EapConfiguration"
+          },
+          "deployments" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EapDeployment"
+            }
+          },
+          "appClientException" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "appName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "appTransportCertHttps" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "appTransportTypeFile" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "appTransportTypeHttps" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "appUserDir" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "appUserName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "eapVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "eapXp" : {
+            "type" : "boolean"
+          },
+          "eapYamlExtension" : {
+            "type" : "boolean"
+          },
+          "eapBootableJar" : {
+            "type" : "boolean"
+          },
+          "eapUseGit" : {
+            "type" : "boolean"
+          },
+          "raw" : {
+            "type" : "string"
+          }
+        }
+      },
+      "JarHash" : {
+        "required" : [ "name", "groupId", "vendor", "version", "sha1Checksum", "sha256Checksum", "sha512Checksum" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUID"
+          },
+          "name" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "groupId" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "vendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "version" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "sha1Checksum" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "sha256Checksum" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "sha512Checksum" : {
+            "maxLength" : 255,
+            "type" : "string"
+          }
+        }
+      },
+      "JvmInstance" : {
+        "required" : [ "linkingHash", "orgId", "hostname", "launchTime", "vendor", "versionString", "version", "majorVersion", "osArch", "processors", "heapMin", "heapMax", "details", "created", "javaClassVersion", "javaSpecificationVendor", "javaVendor", "javaVendorVersion", "javaVmName", "javaVmVendor", "jvmHeapGcDetails", "jvmPid", "jvmReportTime", "systemOsName", "systemOsVersion", "javaHome", "javaLibraryPath", "javaCommand", "javaClassPath", "jvmPackages", "jvmArgs", "workload", "isOcp" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUID"
+          },
+          "linkingHash" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "accountId" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "orgId" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "hostname" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "launchTime" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "vendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "versionString" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "version" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "majorVersion" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "osArch" : {
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "processors" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "heapMin" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "heapMax" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : { }
+          },
+          "created" : {
+            "$ref" : "#/components/schemas/ZonedDateTime"
+          },
+          "jarHashes" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JarHash"
+            }
+          },
+          "javaClassVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaSpecificationVendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVendorVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVmName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaVmVendor" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "jvmHeapGcDetails" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "jvmPid" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "jvmReportTime" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "systemOsName" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "systemOsVersion" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "javaHome" : {
+            "type" : "string"
+          },
+          "javaLibraryPath" : {
+            "type" : "string"
+          },
+          "javaCommand" : {
+            "type" : "string"
+          },
+          "javaClassPath" : {
+            "type" : "string"
+          },
+          "jvmPackages" : {
+            "type" : "string"
+          },
+          "jvmArgs" : {
+            "type" : "string"
+          },
+          "workload" : {
+            "type" : "string"
+          },
+          "isOcp" : {
+            "type" : "boolean"
+          },
+          "ocp" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "NameVersionPair" : {
+        "required" : [ "name", "version" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "version" : {
+            "maxLength" : 255,
+            "type" : "string"
+          }
+        }
+      },
+      "ResponseWrapperEapInstance" : {
+        "type" : "object",
+        "properties" : {
+          "response" : {
+            "$ref" : "#/components/schemas/EapInstance"
+          }
+        }
+      },
+      "ResponseWrapperJvmInstance" : {
+        "type" : "object",
+        "properties" : {
+          "response" : {
+            "$ref" : "#/components/schemas/JvmInstance"
+          }
+        }
+      },
+      "ResponseWrapperListEapInstance" : {
+        "type" : "object",
+        "properties" : {
+          "response" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EapInstance"
+            }
+          }
+        }
+      },
+      "ResponseWrapperListJvmInstance" : {
+        "type" : "object",
+        "properties" : {
+          "response" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JvmInstance"
+            }
+          }
+        }
+      },
+      "ResponseWrapperListObject" : {
+        "type" : "object",
+        "properties" : {
+          "response" : {
+            "type" : "array",
+            "items" : { }
+          }
+        }
+      },
+      "ResponseWrapperListUUID" : {
+        "type" : "object",
+        "properties" : {
+          "response" : {
+            "type" : "array",
+            "items" : {
+              "format" : "uuid",
+              "pattern" : "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "UUID" : {
+        "format" : "uuid",
+        "pattern" : "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+        "type" : "string"
+      },
+      "ZonedDateTime" : {
+        "format" : "date-time",
+        "type" : "string",
+        "example" : "2022-03-10T12:15:50-04:00"
+      }
+    },
+    "securitySchemes" : {
+      "SecurityScheme" : {
+        "type" : "http",
+        "description" : "Authentication",
+        "scheme" : "basic"
+      }
+    }
+  }
+}
