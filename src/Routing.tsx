@@ -3,28 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import { InvalidObject } from '@redhat-cloud-services/frontend-components/InvalidObject';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
-const OopsPage = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "UnderConstructionPage" */ './routes/OopsPage/OopsPage'
-    )
-);
-const UnderConstructionPage = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "UnderConstructionPage" */ './routes/UnderConstructionPage/UnderConstructionPage'
-    )
-);
-
 const routes = [
-  {
-    path: '/',
-    element: UnderConstructionPage,
-  },
-  {
-    path: 'oops',
-    element: OopsPage,
-  },
+  // {
+  //   path: '/',
+  //   element: InvalidObject,
+  // },
   /* Catch all unmatched routes */
   {
     route: {

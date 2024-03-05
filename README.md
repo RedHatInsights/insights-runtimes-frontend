@@ -52,7 +52,52 @@ For example, you might need to add something like:
 
 ```
 
-### Running locally with a local insights-chrome and chrome-service-backend
+### Running locally with a local chrome-service-backend and insights-inventory-frontend
+
+This first option works intandem with a local `chrome-service-backend` to add our runtimes components into the federated modules (this will be done organically once this repo is onboarded, but until then this local repo is required), and a local `insights-inventory-frontend`.
+
+To get started, you can use the branches I have set up at:
+
+[chrome-service-backend](https://github.com/aptmac/chrome-service-backend/tree/wip-runtimes-inventory)
+
+[insights-inventory-frontend](https://github.com/aptmac/insights-inventory-frontend/tree/wip-runtimes-inventory)
+
+#### In chrome-service-backend
+
+In two terminals, run:
+```bash
+make infra
+```
+```bash
+go run .
+```
+
+By default this will run the backend service on `localhost:8000`.
+
+
+#### In insights-inventory-frontend
+In two terminals, run:
+```bash
+npm run mock-server
+```
+```bash
+npm run start -- --port=8003
+```
+
+This will run the mock prism endpoint for populating the Inventory page, and then run the inventory repo without a proxy (on port `8003`) so it can be picked up by our local run of `insights-runtimes-frontend`.
+
+#### In insights-runtimes-frontend
+In two terminals, run:
+```bash
+npm run mock-instances
+```
+```bash
+LOCAL_APPS=inventory:8003~http CHROME_SERVICE=8000 npm run start:mock
+```
+
+This will run this repository with all the requisite information to populate the Inventory page and start displaying our mock data. Once everything is running, you should be able to visit https://stage.foo.redhat.com:1337/insights/inventory and start viewing Inventory and Runtimes information.
+
+### Running locally with a local insights-chrome, chrome-service-backend, and insights-inventory-frontend
 
 This second option works intandem with a local [chrome frontend](https://github.com/RedHatInsights/insights-chrome) and [chrome backend](https://github.com/RedHatInsights/chrome-service-backend) with the aim of developing standalone pages and integrating with the Hybrid Cloud Console (HCC) navigation.
 

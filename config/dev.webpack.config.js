@@ -11,12 +11,24 @@ const { config: webpackConfig, plugins } = config({
     proxyVerbose: true,
     env: `${process.env.ENVIRONMENT || 'stage'}-${process.env.BETA ? 'beta' : 'stable'}`, // for accessing prod-beta start your app with ENVIRONMENT=prod and BETA=true
     appUrl: process.env.BETA
-      ? ['/beta/application-services/middleware-inventory', '/preview/application-services/middleware-inventory']
-      : '/application-services/middleware-inventory',
+      ? ['/beta/insights/inventory', '/preview/insights/inventory']
+      : '/insights/inventory',
     routes: {
       ...(process.env.CONFIG_PORT && {
         [`${process.env.BETA ? '/beta' : ''}/config`]: {
           host: `http://localhost:${process.env.CONFIG_PORT}`,
+        },
+      }),
+      ...(process.env.CHROME_SERVICE && { // for specifying a local instance of chrome-service-backend
+        // web sockets
+        '/wss/chrome-service/': {
+          target: `ws://localhost:${process.env.CHROME_SERVICE}`,
+          // To upgrade the connection
+          ws: true,
+        },
+        // REST API
+        '/api/chrome-service/v1/': {
+          host: `http://localhost:${process.env.CHROME_SERVICE}`,
         },
       }),
     },
