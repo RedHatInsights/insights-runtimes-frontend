@@ -13,7 +13,7 @@ objects:
         versions:
           - v1
       envName: ${ENV_NAME}
-      title: Starter App
+      title: Runtimes
       deploymentRepo: https://github.com/RedHatInsights/insights-runtimes-frontend
       frontend:
         paths:
@@ -22,11 +22,11 @@ objects:
 
       module:
         manifestLocation: '/apps/insights-runtimes-frontend/fed-mods.json'
-        modules:
-          - id: 'overview'
-            module: './RootApp'
-            routes:
-              - pathname: /staging/starter
+        # modules:
+        #   - id: 'overview'
+        #     module: './RootApp'
+        #     routes:
+        #       - pathname: /staging/starter
 
 parameters:
   - name: ENV_NAME

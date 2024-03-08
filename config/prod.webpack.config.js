@@ -13,6 +13,8 @@ plugins.push(
     {
       root: resolve(__dirname, "../"),
       exposes: {
+        // Application root
+        // "./RootApp": resolve(__dirname, "../src/AppEntry"),
         // Host Inventory Runtimes Processes Card
         "./RuntimesProcessesCard": resolve(
           __dirname,
