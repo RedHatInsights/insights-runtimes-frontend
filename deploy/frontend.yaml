@@ -17,11 +17,11 @@ objects:
       deploymentRepo: https://github.com/RedHatInsights/insights-runtimes-frontend
       frontend:
         paths:
-          - /apps/insights-runtimes-frontend
+          - /apps/runtimes
       image: ${IMAGE}:${IMAGE_TAG}
 
       module:
-        manifestLocation: '/apps/insights-runtimes-frontend/fed-mods.json'
+        manifestLocation: '/apps/runtimes/fed-mods.json'
         # modules:
         #   - id: 'overview'
         #     module: './RootApp'
