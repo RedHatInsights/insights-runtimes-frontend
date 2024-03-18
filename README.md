@@ -159,17 +159,10 @@ LOCAL_APPS=inventory:8003,runtimes:8004~http CHROME_SERVICE=8000 npm run dev
 
 ## Mocking Runtimes Inventory API
 
-At the moment there are two mock services available for developing against.
-
 ```bash
 npm run mock-instances
 ```
 This script utilizes `json-server` and simply hosts the contents of the `mock/instances.json` file at `localhost:3000`. The data in `instances.json` was pulled from an integration test running in insights-runtimes-inventory, and was simply a request to the `instances` endpoint that returned two `JvmInstances`. There is a custom proxy provided in the `dev.webpack.config.js` that when used will route traffic directed at the actual instances endpoint towards our local service instead. This mock service is nice because it feeds "real" data into our locally running UI, and looks nicer for demonstration purposes. However, it will always return the same two instances regardless of what request you make, and there is no mock authentication step so this isn't the greatest for imitating the processes this project will be making in a real environment.
-
-```bash
-npm run mock-server
-```
-This second local service follows the same method found in `insights-inventory-frontend`, and it uses Prism to create endpoints and fake data based on a provided `openapi.json` file, which in our case has been extracted from a runtimes service running on Ephemeral. The pros to this method is that the mock server acts more similarly to the real thing, and requires (fake) authentication and properly formatted requests. A potential con here though is that the data is complete gibberish, so it's nice for drawing up components and doing fine-tuning on styling, but isn't so nice to demo.
 
 ## Common Problems You Might Encounter
 (taken from the insights-inventory-frontend readme, but also applicable here)
