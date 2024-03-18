@@ -65,7 +65,7 @@ plugins.push(
       useFileHash: false,
       exposes: {
         // Application root
-        // "./RootApp": resolve(__dirname, "../src/AppEntry"),
+        "./RootApp": resolve(__dirname, "../src/AppEntry"),
         // Host Inventory Runtimes Processes Card
         "./RuntimesProcessesCard": resolve(
           __dirname,
