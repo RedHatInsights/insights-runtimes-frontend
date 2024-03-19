@@ -29,51 +29,31 @@ Lastly, make sure you are using [Red Hat proxy](http://hdn.corp.redhat.com/proxy
 
 ## Running locally
 
-At the moment, there is no dedicated page for the Runtimes Inventory project, which means that running this repository locally by itself won't display anything meaningful *yet*. In the meantime, here is how you can run and develop on this repository.
+At the moment, there is no dedicated landing page for the Runtimes Inventory Frontend content, which means that running this repository locally by itself won't display anything meaningful *yet*. In the meantime, here is how you can run and develop on this repository.
 
 Temporary note: because insights-runtimes-frontend isn't shipped or integrated into other applications at the moment, you'll need to manually include it's components into the other locally running apps. For example, the `RuntimesProcessesCard` will need to be manually added to the Inventory Page code for it to be visible in the following examples.
 
 For example, you might need to add something like:
 ```JavaScript
---- a/src/components/GeneralInfo/GeneralInformation/GeneralInformation.js
-+++ b/src/components/GeneralInfo/GeneralInformation/GeneralInformation.js
-@@ -183,13 +183,22 @@ class GeneralInformation extends Component {
-                 )}
- 
-                 {RuntimesProcessesCardWrapper && (
-+                  <GridItem>
-+                    <AsyncComponent
-+                      appName="runtimes"
-+                      module="./RuntimesProcessesCard"
-+                    />
-+                  </GridItem>
-+                )}
 +
-
++  <GridItem>
++    <AsyncComponent
++      appName="runtimes"
++      module="./RuntimesProcessesCard"
++      // eslint-disable-next-line react/prop-types
++      hostname={this.props.entity.fqdn}
++    />
++  </GridItem>
++
 ```
 
-### Running locally with a local chrome-service-backend and insights-inventory-frontend
+### Running locally with a local insights-inventory-frontend
 
-This first option works intandem with a local `chrome-service-backend` to add our runtimes components into the federated modules (this will be done organically once this repo is onboarded, but until then this local repo is required), and a local `insights-inventory-frontend`.
+This first option works intandem with a local `insights-inventory-frontend`.
 
 To get started, you can use the branches I have set up at:
 
-[chrome-service-backend](https://github.com/aptmac/chrome-service-backend/tree/wip-runtimes-inventory)
-
 [insights-inventory-frontend](https://github.com/aptmac/insights-inventory-frontend/tree/wip-runtimes-inventory)
-
-#### In chrome-service-backend
-
-In two terminals, run:
-```bash
-make infra
-```
-```bash
-go run .
-```
-
-By default this will run the backend service on `localhost:8000`.
-
 
 #### In insights-inventory-frontend
 In two terminals, run:
@@ -92,7 +72,7 @@ In two terminals, run:
 npm run mock-instances
 ```
 ```bash
-LOCAL_APPS=inventory:8003~http CHROME_SERVICE=8000 npm run start:mock
+LOCAL_APPS=inventory:8003~http npm run start:mock
 ```
 
 This will run this repository with all the requisite information to populate the Inventory page and start displaying our mock data. Once everything is running, you should be able to visit https://stage.foo.redhat.com:1337/insights/inventory and start viewing Inventory and Runtimes information.
