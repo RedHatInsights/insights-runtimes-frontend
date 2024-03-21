@@ -3,7 +3,7 @@ import { RuntimesInventoryResponse } from './interfaces';
 
 export const RUNTIMES_BASE_URL = '/api/runtimes-inventory-service/v1';
 
-export const fetchRuntimesInstances = (hostname: string) => {
+export const fetchJvmInstances = (hostname: string) => {
   return instance.get<unknown, RuntimesInventoryResponse>(
     `${RUNTIMES_BASE_URL}/instances?hostname=${hostname}&includeRaw=false`
   );
