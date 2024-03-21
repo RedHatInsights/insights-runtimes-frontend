@@ -22,7 +22,7 @@ export interface JvmInstance {
   //   details: Map<string, object>;
   created: string;
   javaClassPath: string;
-  javaCLassVersion: string;
+  javaClassVersion: string;
   javaHome: string;
   javaLibraryPath: string;
   javaSpecificationVendor: string;
@@ -30,7 +30,7 @@ export interface JvmInstance {
   javaVendorVersion: string;
   javaVmName: string;
   javaVmVendor: string;
-  jvmHeapDetails: string;
+  jvmHeapGcDetails: string;
   jvmPid: string;
   jvmReportTime: string;
   systemOsName: string;
