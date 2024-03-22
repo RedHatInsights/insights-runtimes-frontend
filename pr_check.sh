@@ -6,7 +6,7 @@
 # name of app-sre "application" folder this component lives in; needs to match for quay
 export COMPONENT="runtimes-inventory"
 # Needs to match the quay repo name set by app.yaml in app-interface
-export IMAGE="quay.io/cloudservices/$COMPONENT"
+export IMAGE="quay.io/cloudservices/insights-runtimes-frontend"
 export WORKSPACE=${WORKSPACE:-$APP_ROOT} # if running in jenkins, use the build's workspace
 export APP_ROOT=$(pwd)
 COMMON_BUILDER=https://raw.githubusercontent.com/RedHatInsights/insights-frontend-builder-common/master
