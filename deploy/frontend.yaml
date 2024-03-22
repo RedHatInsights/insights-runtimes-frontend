@@ -7,7 +7,7 @@ objects:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: Frontend
     metadata:
-      name: insights-runtimes-frontend
+      name: runtimes
     spec:
       API:
         versions:
