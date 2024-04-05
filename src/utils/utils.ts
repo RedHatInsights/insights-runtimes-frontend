@@ -16,16 +16,16 @@ export const mergeToBasename = (to: To, basename: string): To => {
 
 export const formatInstancesData = (instances: JvmInstance[]) => {
   instances.forEach((instance) => {
-    // change the unidentified workload type
-    if (instance.workload === 'Unidentified') {
-      instance.workload = 'General Java Application';
-    }
-    // format the date string
-    instance.created = new Date(instance.created).toLocaleString();
     // add the appName value to a JvmInstance
     if (!instance['appName']) {
       instance.appName = instance.details['app.name'];
     }
+    // change the unidentified workload type
+    if (instance.workload === 'Unidentified') {
+      instance.workload = `General Java Application (${instance.appName})`;
+    }
+    // format the date string
+    instance.created = new Date(instance.created).toLocaleString();
     // format the GC details string
     const regex = new RegExp('gc::(.*?)::(.*?)$');
     const match = regex.exec(instance.jvmHeapGcDetails);
