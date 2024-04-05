@@ -3,6 +3,7 @@ import { fetchJvmInstances } from '../api/api';
 import { JvmInstance, RuntimesInventoryResponse } from '../api/interfaces';
 import ProcessesAccordion from './RuntimesProcessesAccordion';
 import InventorySystemPropertiesCard from './InventorySystemPropertiesCard';
+import { formatInstancesData } from '../utils/utils';
 
 /**
  * The RuntimesProcessesCard is a component exported using federated modules
@@ -53,7 +54,9 @@ const RuntimesProcessesCard = ({ hostname }: { hostname: string }) => {
     <InventorySystemPropertiesCard
       title="Application Services Processes"
       isLoading={isLoading}
-      content={<ProcessesAccordion instances={instances} />}
+      content={
+        <ProcessesAccordion instances={formatInstancesData(instances)} />
+      }
     ></InventorySystemPropertiesCard>
   );
 };

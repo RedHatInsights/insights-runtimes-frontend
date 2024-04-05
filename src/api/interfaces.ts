@@ -8,6 +8,7 @@ export interface RuntimesInventoryResponse {
 export interface JvmInstance {
   id: string;
   accountId: string;
+  appName?: string;
   orgId: string;
   hostname: string;
   launchTime: number;
@@ -19,7 +20,9 @@ export interface JvmInstance {
   processors: number;
   heapMin: number;
   heapMax: number;
-  //   details: Map<string, object>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  details: any;
+  // details: { [key: string]: string };
   created: string;
   javaClassPath: string;
   javaClassVersion: string;

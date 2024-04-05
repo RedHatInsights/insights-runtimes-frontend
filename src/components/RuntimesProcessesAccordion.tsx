@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from 'react';
-import { EapInstance, JvmInstance } from '../api/interfaces';
 import {
   Accordion,
   AccordionContent,
@@ -12,26 +11,26 @@ import {
   TextListVariants,
 } from '@patternfly/react-core';
 import React from 'react';
+import { EapInstance, JvmInstance } from '../api/interfaces';
 
-interface InstanceInfoTitles {
+export interface InstanceInfoTitles {
   id: string; // JvmInstance attribute key
   title: string; // formatted string to be displayed in the accordion content
 }
 
 // List where each entry contains the JSON attribute key and the corresponding formatted title for the row
-const instanceDataRows: Array<InstanceInfoTitles> = [
+// If the id doesn't exist on the instance, it will be ignored when writing values into the card
+export const instanceDataRows: Array<InstanceInfoTitles> = [
   { id: 'workload', title: 'Workload Type' },
-  // ['deployments', 'EAP deployments'], // deployments is a list
+  { id: 'created', title: ' Created' },
+  { id: 'eapVersion', title: 'EAP Version' },
   { id: 'appName', title: 'Application' },
-  { id: 'javaVendor', title: 'Vendor' },
-  { id: 'appUserDir', title: 'Application directory' },
-  { id: 'javaClassVersion', title: 'Class version' },
-  { id: 'javaVmName', title: 'VM name' },
-  { id: 'jvmHeapGcDetails', title: 'Heap gc details' },
-  { id: 'heapMin', title: 'Heap min' },
-  { id: 'heapMax', title: 'Heap max' },
-  { id: 'javaHome', title: 'Java home path' },
-  // { id: 'javaClassPath', title: 'Class path' }, // too long and not entirely useful ?
+  { id: 'processors', title: 'Processors' },
+  { id: 'javaVendor', title: 'JVM Vendor' },
+  { id: 'versionString', title: 'JVM Version' },
+  { id: 'jvmHeapGcDetails', title: 'Garbage Collector Details' },
+  { id: 'heapMin', title: 'Heap min (MB)' },
+  { id: 'heapMax', title: 'Heap max (MB)' },
 ];
 
 const RuntimesProcessesAccordion = ({
@@ -88,26 +87,28 @@ const RuntimesProcessesAccordion = ({
               >
                 <TextList component={TextListVariants.dl}>
                   {instanceDataRows.map((row) => {
-                    return (
-                      <Fragment key={`${row.id} title`}>
-                        <TextListItem
-                          id={`${instance.workload}-${row.id}-title`}
-                          key={`${row.id} title`}
-                          component={TextListItemVariants.dt}
-                          aria-label={`${instance.workload} ${row.id} title`}
-                        >
-                          {row.title}
-                        </TextListItem>
-                        <TextListItem
-                          id={`${instance.workload}-${row.id}-value`}
-                          key={`${row.id} value`}
-                          component={TextListItemVariants.dd}
-                          aria-label={`${instance.workload} ${row.id} value`}
-                        >
-                          {instance[row.id as keyof typeof instance]}
-                        </TextListItem>
-                      </Fragment>
-                    );
+                    if (instance[row.id as keyof typeof instance]) {
+                      return (
+                        <Fragment key={`${row.id} title`}>
+                          <TextListItem
+                            id={`${instance.workload}-${row.id}-title`}
+                            key={`${row.id} title`}
+                            component={TextListItemVariants.dt}
+                            aria-label={`${instance.workload} ${row.id} title`}
+                          >
+                            {row.title}
+                          </TextListItem>
+                          <TextListItem
+                            id={`${instance.workload}-${row.id}-value`}
+                            key={`${row.id} value`}
+                            component={TextListItemVariants.dd}
+                            aria-label={`${instance.workload} ${row.id} value`}
+                          >
+                            {instance[row.id as keyof typeof instance]}
+                          </TextListItem>
+                        </Fragment>
+                      );
+                    }
                   })}
                 </TextList>
               </AccordionContent>
