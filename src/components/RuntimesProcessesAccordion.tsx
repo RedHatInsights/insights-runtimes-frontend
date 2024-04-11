@@ -74,7 +74,7 @@ const RuntimesProcessesAccordion = ({
                   columnGap: 16,
                 }}
               >
-                {instance.workload}
+                {instance.title}
               </AccordionToggle>
               <AccordionContent
                 isHidden={!expanded.includes(`instance-${index}-toggle`)}
@@ -91,18 +91,18 @@ const RuntimesProcessesAccordion = ({
                       return (
                         <Fragment key={`${row.id} title`}>
                           <TextListItem
-                            id={`${instance.workload}-${row.id}-title`}
+                            id={`${instance.title}-${row.id}-title`}
                             key={`${row.id} title`}
                             component={TextListItemVariants.dt}
-                            aria-label={`${instance.workload} ${row.id} title`}
+                            aria-label={`${instance.title} ${row.id} title`}
                           >
                             {row.title}
                           </TextListItem>
                           <TextListItem
-                            id={`${instance.workload}-${row.id}-value`}
+                            id={`${instance.title}-${row.id}-value`}
                             key={`${row.id} value`}
                             component={TextListItemVariants.dd}
-                            aria-label={`${instance.workload} ${row.id} value`}
+                            aria-label={`${instance.title} ${row.id} value`}
                           >
                             {instance[row.id as keyof typeof instance]}
                           </TextListItem>
