@@ -16,13 +16,15 @@ export const mergeToBasename = (to: To, basename: string): To => {
 
 export const formatInstancesData = (instances: JvmInstance[]) => {
   instances.forEach((instance) => {
+    instance.title = instance.workload;
     // add the appName value to a JvmInstance
     if (!instance['appName']) {
       instance.appName = instance.details['app.name'];
     }
-    // change the unidentified workload type
+    // change the unidentified workload type, and set the title to the application name
     if (instance.workload === 'Unidentified') {
-      instance.workload = `General Java Application (${instance.appName})`;
+      instance.workload = `General Java Application`;
+      instance.title = instance.appName;
     }
     // format the date string
     instance.created = new Date(instance.created).toLocaleString();

@@ -6,6 +6,7 @@ export interface RuntimesInventoryResponse {
  * Interfaces borrowed from insights-runtimes-inventory
  */
 export interface JvmInstance {
+  title?: string; // will be set by utils.js as the title for the Runtimes Accordion entry
   id: string;
   accountId: string;
   appName?: string;
