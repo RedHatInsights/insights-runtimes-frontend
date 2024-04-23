@@ -61,7 +61,6 @@ export const formatInstancesData = (instances: JvmInstance[]) => {
  */
 export const formatDateTimeString = (date: string) => {
   let datestring = new Date(date).toLocaleString();
-  // let datestring = 'Invalid Date';
   if (datestring === 'Invalid Date') {
     const regex = new RegExp(
       '^([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3})[0-9]{3}(Z|[+-][0-9]{2}:[0-9]{2})$'
