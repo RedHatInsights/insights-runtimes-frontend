@@ -14,8 +14,7 @@ describe('Utilities', () => {
     });
 
     it('should return the passed value as a fallback', () => {
-      // RFC-3339 Date Time String
-      const datestring = '2024-02-21T20:14:29.38-05:00';
+      const datestring = '2024-02-21T20:14:29.38-05:00Z';
       expect(formatDateTimeString(datestring)).toBe(datestring);
     });
   });
