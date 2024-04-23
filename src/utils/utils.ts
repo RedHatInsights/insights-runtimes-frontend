@@ -74,9 +74,9 @@ export const formatDateTimeString = (date: string) => {
         // if the regex capture works but still results in an invalid date, just return the ISO-8061
         datestring = date;
       }
+    } else {
+      datestring = date;
     }
-  } else {
-    datestring = date;
   }
   return datestring;
 };
