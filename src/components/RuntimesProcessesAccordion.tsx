@@ -25,7 +25,7 @@ export const instanceDataRows: Array<InstanceInfoTitles> = [
   { id: 'created', title: ' Created' },
   { id: 'eapVersion', title: 'EAP Version' },
   { id: 'appName', title: 'Application' },
-  { id: 'processors', title: 'Processors' },
+  { id: 'processors', title: 'Cores' },
   { id: 'javaVendor', title: 'JVM Vendor' },
   { id: 'versionString', title: 'JVM Version' },
   { id: 'jvmHeapGcDetails', title: 'Garbage Collector Details' },
