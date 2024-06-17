@@ -7,7 +7,7 @@ const appName = packageJson[bundle]['appname'];
 
 module.exports = {
   appName,
-  appUrl: `/${bundle}/${appName}`,
+  appUrl: `/${bundle}/inventory`, // currently the only frontend component lives on a host inventory system page
   useProxy: process.env.PROXY === 'true',
   debug: true,
   plugins: [
