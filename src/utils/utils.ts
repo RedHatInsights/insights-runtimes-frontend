@@ -23,8 +23,16 @@ export const formatInstancesData = (instances: JvmInstance[]) => {
     }
     // change the unidentified workload type, and set the title to the application name
     if (instance.workload === 'Unidentified') {
-      instance.workload = `General Java Application`;
+      instance.workload = 'General Java Application';
       instance.title = instance.appName;
+    } else if (instance.workload === '') {
+      // MWTELE-271: the UI should accommodate redacted workload & app.name
+      instance.workload = 'Unknown workload';
+      if (instance.appName === '') {
+        instance.title = instance.workload;
+      } else {
+        instance.title = instance.appName;
+      }
     }
     // format the date string
     instance.created = formatDateTimeString(instance.created);
