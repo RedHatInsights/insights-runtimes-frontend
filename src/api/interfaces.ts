@@ -21,9 +21,6 @@ export interface JvmInstance {
   processors: number;
   heapMin: number;
   heapMax: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  details: any;
-  // details: { [key: string]: string };
   created: string;
   javaClassPath: string;
   javaClassVersion: string;

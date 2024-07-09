@@ -17,21 +17,27 @@ export const mergeToBasename = (to: To, basename: string): To => {
 export const formatInstancesData = (instances: JvmInstance[]) => {
   instances.forEach((instance) => {
     instance.title = instance.workload;
-    // add the appName value to a JvmInstance
+    // if there is no appName, use the workload as it's accordion title
     if (!instance['appName']) {
-      instance.appName = instance.details['app.name'];
+      instance.title = instance.workload;
     }
     // change the unidentified workload type, and set the title to the application name
     if (instance.workload === 'Unidentified') {
       instance.workload = 'General Java Application';
-      instance.title = instance.appName;
+      if (instance.appName) {
+        // if it's an eap instance, use the app name as it's title
+        instance.title = instance.appName;
+      } else {
+        // if it's a jvm instance, use the workload as it's title
+        instance.title = instance.workload;
+      }
     } else if (instance.workload === '') {
       // MWTELE-271: the UI should accommodate redacted workload & app.name
       instance.workload = 'Unknown workload';
-      if (instance.appName === '') {
-        instance.title = instance.workload;
-      } else {
+      if (instance.appName) {
         instance.title = instance.appName;
+      } else {
+        instance.title = instance.workload;
       }
     }
     // format the date string

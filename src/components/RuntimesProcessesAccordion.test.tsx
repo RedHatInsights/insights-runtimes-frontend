@@ -82,7 +82,6 @@ describe('Runtimes Processes Accordion', () => {
   it('should generate a title if both workload and app.name is empty', () => {
     const modifiedInstance = getCopyOfInstance(mockInstance);
     modifiedInstance.workload = '';
-    modifiedInstance.details['app.name'] = '';
     const { container } = render(
       <RuntimesProcessesAccordion
         instances={formatInstancesData([modifiedInstance])}
