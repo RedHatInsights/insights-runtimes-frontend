@@ -31,53 +31,29 @@ Lastly, make sure you are using [Red Hat proxy](http://hdn.corp.redhat.com/proxy
 
 At the moment, there is no dedicated landing page for the Runtimes Inventory Frontend content, which means that running this repository locally by itself won't display anything meaningful *yet*. In the meantime, here is how you can run and develop on this repository.
 
-Temporary note: because insights-runtimes-frontend isn't shipped or integrated into other applications at the moment, you'll need to manually include it's components into the other locally running apps. For example, the `RuntimesProcessesCard` will need to be manually added to the Inventory Page code for it to be visible in the following examples.
-
-For example, you might need to add something like:
-```JavaScript
-+
-+  <GridItem>
-+    <AsyncComponent
-+      appName="runtimes"
-+      module="./RuntimesProcessesCard"
-+      // eslint-disable-next-line react/prop-types
-+      hostname={this.props.entity.fqdn}
-+    />
-+  </GridItem>
-+
-```
-
-### Running locally with a local insights-inventory-frontend
-
-This first option works intandem with a local `insights-inventory-frontend`.
-
-To get started, you can use the branches I have set up at:
-
-[insights-inventory-frontend](https://github.com/aptmac/insights-inventory-frontend/tree/wip-runtimes-inventory)
-
-#### In insights-inventory-frontend
-In two terminals, run:
+Install the project dependencies:
 ```bash
-npm run mock-server
-```
-```bash
-npm run start -- --port=8003
+npm install
 ```
 
-This will run the mock prism endpoint for populating the Inventory page, and then run the inventory repo without a proxy (on port `8003`) so it can be picked up by our local run of `insights-runtimes-frontend`.
+Run the development server:
+```bash
+npm run start:proxy
+```
 
-#### In insights-runtimes-frontend
-In two terminals, run:
+The local version of the app will be available at https://stage.foo.redhat.com:1337/insights/inventory/.
+
+### Running locally with a mocked data
+
 ```bash
-npm run mock-instances
+npm run start:mock
 ```
-```bash
-LOCAL_APPS=inventory:8003~http npm run start:mock
-```
+
+This will run the local app with a `customProxy` to route traffic intended for the host and runtimes backends towards our locally running APIs instead. See the following sections in this readme for more information on running the mock backends.
 
 This will run this repository with all the requisite information to populate the Inventory page and start displaying our mock data. Once everything is running, you should be able to visit https://stage.foo.redhat.com:1337/insights/inventory and start viewing Inventory and Runtimes information.
 
-### Running locally with a local insights-chrome, chrome-service-backend, and insights-inventory-frontend
+### Running locally with a local insights-chrome and chrome-service-backend
 
 This second option works intandem with a local [chrome frontend](https://github.com/RedHatInsights/insights-chrome) and [chrome backend](https://github.com/RedHatInsights/chrome-service-backend) with the aim of developing standalone pages and integrating with the Hybrid Cloud Console (HCC) navigation.
 
@@ -95,37 +71,11 @@ Lastly, run the backend server locally with the command listed above.
 ```bash
 go run .
 ```
-
-#### In insights-inventory-frontend
-
-This script uses Prism to run a mock server using an `openapi.json` found in insights-host-inventory ([link](https://raw.githubusercontent.com/RedHatInsights/insights-host-inventory/master/swagger/openapi.json)). Unless you already have insights-enabled systems assigned to your account, this step is necessary to view the Inventory pages.
-
-Because you'll be running `insights-chrome` as the host application, you also need to copy the custom proxy from the `insights-inventory-frontend` webpack config into the one found in `insights-chrome`.
-
-```bash
-npm run mock-server
-```
-
---
-
-This command runs the insights inventory frontend on a specified port without a proxy. This allows it to be picked up by other local frontends using the `LOCAL_APPS` env variable.
-```bash
-npm run start -- --port=8003
-```
-
 #### In insights-runtimes-frontend (this project)
 
-This script uses `json-server` to host the content provided in `mock/instances.json` as if it were running on a server. The content in `instances.json` was extracted from a verification check in the insights-runtimes-inventory integration tests, so this is test data the repo uses to make sure everything is okay. 
-
-Note: In our `dev.webpack.config.js` there is a custom proxy that routes traffic from the actual instances endpoint towards our local mocked json-server, and this customProxy will be required in the webpack config of whatever frontend application you choose to be the host application (insights-chrome in this case).
-
+Run insights-runtimes-frontend without a proxy on a specified port, 8002 in this case.
 ```bash
-npm run mock-instances
-```
-
-Run insights-runtimes-frontend without a proxy on a specified port, 8004 in this case.
-```bash
-npm run start -- --port=8004
+npm run start -- --port=8002
 ```
 
 #### In insights-chrome
@@ -134,8 +84,18 @@ In this last step, you'll run `insights-chrome` in dev mode, and list the local 
 
 Note: this step waits for the local inventory and runtimes services to be up and ready. The inventory service sometimes takes longer to setup (~30 seconds), so if you're running all of these commands quickly in succession and encounter an error, this might be the reason.
 ```bash
-LOCAL_APPS=inventory:8003,runtimes:8004~http CHROME_SERVICE=8000 npm run dev
+LOCAL_APPS=runtimes:8002~http CHROME_SERVICE=8000 npm run dev
 ```
+
+## Mocking Host Inventory API
+```bash
+cd mock/mock-host-inventory
+npm install && npm run mock-server
+```
+
+This repository contains a sub-project that replicates the same mock API that is used in the `insights-inventory-frontend` repository.
+
+See [mock-host-inventory](/mock/mock-host-inventory/README.md) for more information.
 
 ## Mocking Runtimes Inventory API
 
