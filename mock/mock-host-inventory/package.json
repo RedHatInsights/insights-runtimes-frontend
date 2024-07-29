@@ -1,0 +1,14 @@
+{
+    "name": "mock-host-inventory",
+    "version": "0.0.1",
+    "private": false,
+    "devDependencies": {
+      "@stoplight/prism-cli": "4.10.5"
+    },
+    "scripts": {
+      "mock-server": "prism mock -d $npm_package_config_api_schema_path"
+    },
+    "config": {
+      "api_schema_path": "https://raw.githubusercontent.com/RedHatInsights/insights-host-inventory/master/swagger/openapi.json"
+  }
+}
