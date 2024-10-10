@@ -18,13 +18,15 @@ const InventorySystemPropertiesCard = ({
   title,
   isLoading,
   content,
+  cardId = 'system-properties-card',
 }: {
   title: string;
   isLoading: boolean;
   content: ReactNode;
+  cardId?: string;
 }) => {
   return (
-    <Card ouiaId="system-properties-card">
+    <Card ouiaId={`${cardId}`}>
       <CardBody>
         <Stack hasGutter>
           <StackItem>
