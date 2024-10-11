@@ -57,6 +57,7 @@ const RuntimesProcessesCard = ({ hostname }: { hostname: string }) => {
       content={
         <ProcessesAccordion instances={formatInstancesData(instances)} />
       }
+      cardId="application-services-processes"
     ></InventorySystemPropertiesCard>
   );
 };
