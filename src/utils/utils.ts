@@ -22,7 +22,10 @@ export const formatInstancesData = (instances: JvmInstance[]) => {
       instance.title = instance.workload;
     }
     // change the unidentified workload type, and set the title to the application name
-    if (instance.workload === 'Unidentified') {
+    if (
+      instance.workload === 'Unidentified' ||
+      instance.workload === '[None]'
+    ) {
       instance.workload = 'General Java Application';
       if (instance.appName) {
         // if it's an eap instance, use the app name as it's title
