@@ -9,6 +9,7 @@ objects:
     metadata:
       name: runtimes
     spec:
+      feoConfigEnabled: true # flags a frontend to be ready for FEO features
       API:
         versions:
           - v1
@@ -22,11 +23,8 @@ objects:
 
       module:
         manifestLocation: '/apps/runtimes/fed-mods.json'
-        # modules:
-        #   - id: 'overview'
-        #     module: './RootApp'
-        #     routes:
-        #       - pathname: /staging/starter
+        # Frontend Operator Migration - effective September 30, 2025 this is where to declare modules for the frontend app
+        # See: https://github.com/RedHatInsights/chrome-service-backend/blob/main/docs/feo-migration-guide.md#fed-modulesjson-replacement
 
 parameters:
   - name: ENV_NAME
