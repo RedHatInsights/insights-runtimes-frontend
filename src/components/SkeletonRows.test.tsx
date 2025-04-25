@@ -8,7 +8,7 @@ describe('Skeleton Rows', () => {
     const numRows = 5;
     const { container } = render(<SkeletonRows numRows={numRows} />);
     expect(container.getElementsByClassName('pf-v5-c-skeleton').length).toBe(
-      numRows
+      numRows,
     );
   });
 });

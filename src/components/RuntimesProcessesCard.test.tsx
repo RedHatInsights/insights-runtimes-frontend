@@ -12,7 +12,7 @@ describe('Runtimes Processes Card', () => {
       .mockResolvedValue(emptyResponse);
     render(<RuntimesProcessesCard hostname={'empty'} />);
     await waitFor(() => {
-      expect(fetchSpy).toBeCalledWith('empty');
+      expect(fetchSpy).toHaveBeenCalledWith('empty');
     });
     expect(screen.queryByText('Application Services Processes')).toBeNull();
     expect(screen.queryByText('pf-v5-c-accordion')).toBeNull();
@@ -25,7 +25,7 @@ describe('Runtimes Processes Card', () => {
       .mockRejectedValue('error');
     render(<RuntimesProcessesCard hostname={'error'} />);
     await waitFor(() => {
-      expect(fetchSpy).toBeCalledWith('error');
+      expect(fetchSpy).toHaveBeenCalledWith('error');
     });
     expect(console.error).toHaveBeenCalledWith('error');
     expect(screen.queryByText('Application Services Processes')).toBeNull();
@@ -38,7 +38,7 @@ describe('Runtimes Processes Card', () => {
       .mockResolvedValue({ response: [mockInstance] });
     render(<RuntimesProcessesCard hostname={'mockHostname'} />);
     await waitFor(() => {
-      expect(fetchSpy).toBeCalledWith('mockHostname');
+      expect(fetchSpy).toHaveBeenCalledWith('mockHostname');
     });
     expect(screen.queryByText('Application Services Processes')).toBeDefined();
     expect(screen.queryByText('pf-v5-c-accordion')).toBeDefined();

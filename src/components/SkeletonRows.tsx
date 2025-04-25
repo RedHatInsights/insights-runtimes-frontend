@@ -11,7 +11,7 @@ const SkeletonRows = ({ numRows }: { numRows: number }) => {
       <React.Fragment key={i}>
         <Skeleton size={SkeletonSize.lg} />
         <br />
-      </React.Fragment>
+      </React.Fragment>,
     );
   }
   return <React.Fragment>{skeletonRows}</React.Fragment>;

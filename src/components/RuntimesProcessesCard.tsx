@@ -32,9 +32,8 @@ const RuntimesProcessesCard = ({ hostname }: { hostname: string }) => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response: RuntimesInventoryResponse = await fetchJvmInstances(
-          hostname
-        );
+        const response: RuntimesInventoryResponse =
+          await fetchJvmInstances(hostname);
         const instances: JvmInstance[] = response?.response;
         setInstances(instances);
       } catch (error) {

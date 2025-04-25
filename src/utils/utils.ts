@@ -97,12 +97,12 @@ export const formatDateTimeString = (created: string) => {
     datestring = formatExactUTCString(utcstring);
   } else {
     const regex = new RegExp(
-      '^([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3})[0-9]{3}(Z|[+-][0-9]{2}:[0-9]{2})$'
+      '^([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3})[0-9]{3}(Z|[+-][0-9]{2}:[0-9]{2})$',
     );
     const match = regex.exec(created);
     if (match && match[1] && match[2]) {
       utcstring = new Date(
-        match[1].valueOf().concat(match[2].valueOf())
+        match[1].valueOf().concat(match[2].valueOf()),
       ).toUTCString();
       if (utcstring === 'Invalid Date') {
         // if the regex capture works but still results in an invalid date, just return the ISO-8061

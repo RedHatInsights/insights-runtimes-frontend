@@ -14,10 +14,10 @@ describe('Runtimes Processes Accordion', () => {
     const { container } = render(
       <RuntimesProcessesAccordion
         instances={formatInstancesData([getCopyOfInstance(mockInstance)])}
-      />
+      />,
     );
     expect(
-      container.querySelector('.pf-v5-c-accordion__toggle-text')?.innerHTML
+      container.querySelector('.pf-v5-c-accordion__toggle-text')?.innerHTML,
     ).toEqual('mockWorkload');
   });
 
@@ -25,12 +25,12 @@ describe('Runtimes Processes Accordion', () => {
     const { container } = render(
       <RuntimesProcessesAccordion
         instances={formatInstancesData([getCopyOfInstance(mockInstance)])}
-      />
+      />,
     );
     expect(
       container
         .querySelector('#instance-0-toggle')
-        ?.className.includes('pf-m-expanded')
+        ?.className.includes('pf-m-expanded'),
     ).toBe(true);
   });
 
@@ -41,12 +41,12 @@ describe('Runtimes Processes Accordion', () => {
           getCopyOfInstance(fooInstance),
           getCopyOfInstance(mockInstance),
         ])}
-      />
+      />,
     );
     expect(
       container
         .querySelector('#instance-0-toggle')
-        ?.className.includes('pf-m-expanded')
+        ?.className.includes('pf-m-expanded'),
     ).toBe(false);
   });
 
@@ -54,7 +54,7 @@ describe('Runtimes Processes Accordion', () => {
     const { container } = render(
       <RuntimesProcessesAccordion
         instances={formatInstancesData([getCopyOfInstance(mockInstance)])}
-      />
+      />,
     );
     const fooButton = container.querySelector('#instance-0-toggle');
     if (!fooButton) {
@@ -66,7 +66,7 @@ describe('Runtimes Processes Accordion', () => {
     expect(
       container
         .querySelector('#instance-0-toggle')
-        ?.className.includes('pf-m-expanded')
+        ?.className.includes('pf-m-expanded'),
     ).toBe(false);
 
     // Verify the accordion toggles to re-open
@@ -74,7 +74,7 @@ describe('Runtimes Processes Accordion', () => {
     expect(
       container
         .querySelector('#instance-0-toggle')
-        ?.className.includes('pf-m-expanded')
+        ?.className.includes('pf-m-expanded'),
     ).toBe(true);
   });
 
@@ -85,10 +85,10 @@ describe('Runtimes Processes Accordion', () => {
     const { container } = render(
       <RuntimesProcessesAccordion
         instances={formatInstancesData([modifiedInstance])}
-      />
+      />,
     );
     expect(
-      container.querySelector('.pf-v5-c-accordion__toggle-text')?.innerHTML
+      container.querySelector('.pf-v5-c-accordion__toggle-text')?.innerHTML,
     ).toEqual('Unknown workload');
   });
 });
