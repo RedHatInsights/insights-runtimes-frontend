@@ -10,7 +10,7 @@ describe('Inventory System Properties Card', () => {
         title="Test"
         isLoading={true}
         content={<p>Test Content</p>}
-      />
+      />,
     );
     expect(container.getElementsByClassName('pf-v5-c-skeleton').length).toBe(3);
   });
@@ -21,7 +21,7 @@ describe('Inventory System Properties Card', () => {
         title="Test"
         isLoading={true}
         content={<p>Test Content</p>}
-      />
+      />,
     );
     expect(screen.queryByText('Test Content')).toBeNull();
   });
@@ -32,7 +32,7 @@ describe('Inventory System Properties Card', () => {
         title="Test"
         isLoading={false}
         content={<p>Test Content</p>}
-      />
+      />,
     );
     expect(screen.queryByText('Test Content')).toBeDefined();
   });
