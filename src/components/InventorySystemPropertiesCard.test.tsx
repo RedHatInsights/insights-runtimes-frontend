@@ -12,7 +12,7 @@ describe('Inventory System Properties Card', () => {
         content={<p>Test Content</p>}
       />,
     );
-    expect(container.getElementsByClassName('pf-v5-c-skeleton').length).toBe(3);
+    expect(container.getElementsByClassName('pf-v6-c-skeleton').length).toBe(3);
   });
 
   it('should not render passed content while loading', () => {

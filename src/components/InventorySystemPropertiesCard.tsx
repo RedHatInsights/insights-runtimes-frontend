@@ -2,11 +2,10 @@ import React, { ReactNode } from 'react';
 import {
   Card,
   CardBody,
+  Content,
+  ContentVariants,
   Stack,
   StackItem,
-  Text,
-  TextContent,
-  TextVariants,
 } from '@patternfly/react-core';
 import SkeletonRows from './SkeletonRows';
 
@@ -30,14 +29,14 @@ const InventorySystemPropertiesCard = ({
       <CardBody>
         <Stack hasGutter>
           <StackItem>
-            <TextContent>
-              <Text
-                component={TextVariants.h1}
+            <Content>
+              <Content
+                component={ContentVariants.h1}
                 ouiaId="SystemPropertiesCardTitle"
               >
                 {title}
-              </Text>
-            </TextContent>
+              </Content>
+            </Content>
           </StackItem>
           <StackItem isFilled>
             {isLoading ? <SkeletonRows numRows={3} /> : content}

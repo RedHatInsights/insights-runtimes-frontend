@@ -4,10 +4,6 @@ import { InvalidObject } from '@redhat-cloud-services/frontend-components/Invali
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
 const routes = [
-  // {
-  //   path: '/',
-  //   element: InvalidObject,
-  // },
   /* Catch all unmatched routes */
   {
     route: {

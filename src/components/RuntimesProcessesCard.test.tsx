@@ -15,7 +15,7 @@ describe('Runtimes Processes Card', () => {
       expect(fetchSpy).toHaveBeenCalledWith('empty');
     });
     expect(screen.queryByText('Application Services Processes')).toBeNull();
-    expect(screen.queryByText('pf-v5-c-accordion')).toBeNull();
+    expect(screen.queryByText('pf-v6-c-accordion')).toBeNull();
   });
 
   it('should not display anything if there is an error fetching data', async () => {
@@ -29,7 +29,7 @@ describe('Runtimes Processes Card', () => {
     });
     expect(console.error).toHaveBeenCalledWith('error');
     expect(screen.queryByText('Application Services Processes')).toBeNull();
-    expect(screen.queryByText('pf-v5-c-accordion')).toBeNull();
+    expect(screen.queryByText('pf-v6-c-accordion')).toBeNull();
   });
 
   it('should display content if there is data', async () => {
@@ -41,6 +41,6 @@ describe('Runtimes Processes Card', () => {
       expect(fetchSpy).toHaveBeenCalledWith('mockHostname');
     });
     expect(screen.queryByText('Application Services Processes')).toBeDefined();
-    expect(screen.queryByText('pf-v5-c-accordion')).toBeDefined();
+    expect(screen.queryByText('pf-v6-c-accordion')).toBeDefined();
   });
 });

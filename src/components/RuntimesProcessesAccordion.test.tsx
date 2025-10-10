@@ -17,7 +17,7 @@ describe('Runtimes Processes Accordion', () => {
       />,
     );
     expect(
-      container.querySelector('.pf-v5-c-accordion__toggle-text')?.innerHTML,
+      container.querySelector('.pf-v6-c-accordion__toggle-text')?.innerHTML,
     ).toEqual('mockWorkload');
   });
 
@@ -88,7 +88,7 @@ describe('Runtimes Processes Accordion', () => {
       />,
     );
     expect(
-      container.querySelector('.pf-v5-c-accordion__toggle-text')?.innerHTML,
+      container.querySelector('.pf-v6-c-accordion__toggle-text')?.innerHTML,
     ).toEqual('Unknown workload');
   });
 });
