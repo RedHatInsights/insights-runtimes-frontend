@@ -7,7 +7,7 @@ describe('Skeleton Rows', () => {
   it('should render as many skeleton rows as specified', () => {
     const numRows = 5;
     const { container } = render(<SkeletonRows numRows={numRows} />);
-    expect(container.getElementsByClassName('pf-v5-c-skeleton').length).toBe(
+    expect(container.getElementsByClassName('pf-v6-c-skeleton').length).toBe(
       numRows,
     );
   });

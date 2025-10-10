@@ -4,11 +4,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionToggle,
-  TextContent,
-  TextList,
-  TextListItem,
-  TextListItemVariants,
-  TextListVariants,
+  Content,
+  ContentVariants,
 } from '@patternfly/react-core';
 import React from 'react';
 import { EapInstance, JvmInstance } from '../api/interfaces';
@@ -59,14 +56,16 @@ const RuntimesProcessesAccordion = ({
   }, []);
   return (
     <Accordion asDefinitionList={false} togglePosition="start">
-      <TextContent>
+      <Content>
         {instances.map((instance, index) => {
           return (
-            <AccordionItem key={index}>
+            <AccordionItem
+              key={index}
+              isExpanded={expanded.includes(`instance-${index}-toggle`)}
+            >
               <AccordionToggle
                 id={`instance-${index}-toggle`}
                 onClick={() => toggle(`instance-${index}-toggle`)}
-                isExpanded={expanded.includes(`instance-${index}-toggle`)}
                 style={{
                   // the styling for the Accordion is pulling in the pf4-v5.css
                   // these are used to make it look more like the pf5 Accordion at the moment
@@ -77,7 +76,6 @@ const RuntimesProcessesAccordion = ({
                 {instance.title}
               </AccordionToggle>
               <AccordionContent
-                isHidden={!expanded.includes(`instance-${index}-toggle`)}
                 style={{
                   // by default the Accordion content is smaller and light gray, which is kind of hard to read
                   // use the following styling to better match the mockups
@@ -85,37 +83,37 @@ const RuntimesProcessesAccordion = ({
                   color: 'inherit',
                 }}
               >
-                <TextList component={TextListVariants.dl}>
+                <Content component={ContentVariants.dl}>
                   {instanceDataRows.map((row) => {
                     if (instance[row.id as keyof typeof instance]) {
                       return (
                         <Fragment key={`${row.id} title`}>
-                          <TextListItem
+                          <Content
                             id={`${instance.title}-${row.id}-title`}
                             key={`${row.id} title`}
-                            component={TextListItemVariants.dt}
+                            component={ContentVariants.dt}
                             aria-label={`${instance.title} ${row.id} title`}
                           >
                             {row.title}
-                          </TextListItem>
-                          <TextListItem
+                          </Content>
+                          <Content
                             id={`${instance.title}-${row.id}-value`}
                             key={`${row.id} value`}
-                            component={TextListItemVariants.dd}
+                            component={ContentVariants.dd}
                             aria-label={`${instance.title} ${row.id} value`}
                           >
                             {instance[row.id as keyof typeof instance]}
-                          </TextListItem>
+                          </Content>
                         </Fragment>
                       );
                     }
                   })}
-                </TextList>
+                </Content>
               </AccordionContent>
             </AccordionItem>
           );
         })}
-      </TextContent>
+      </Content>
     </Accordion>
   );
 };
