@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "private": false,
     "devDependencies": {
-      "@stoplight/prism-cli": "4.10.5"
+      "@stoplight/prism-cli": "5.14.2"
     },
     "scripts": {
       "mock-server": "prism mock -d $npm_package_config_api_schema_path"
