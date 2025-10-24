@@ -29,8 +29,8 @@
     "@redhat-cloud-services/frontend-components": "^7.0.3",
     "@redhat-cloud-services/frontend-components-notifications": "^6.0.0",
     "@redhat-cloud-services/frontend-components-utilities": "^7.0.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
@@ -40,8 +40,8 @@
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^14.3.1",
     "@types/jest": "^29.5.13",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@types/react-router-dom": "^5.3.3",
     "@types/redux-logger": "^3.0.13",
     "@typescript-eslint/parser": "^8.31.0",
