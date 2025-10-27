@@ -25,7 +25,7 @@ const InventorySystemPropertiesCard = ({
   cardId?: string;
 }) => {
   return (
-    <Card ouiaId={`${cardId}`}>
+    <Card ouiaId={`${cardId}`} style={{ overflow: 'unset' }}>
       <CardBody>
         <Stack hasGutter>
           <StackItem>
