@@ -3,13 +3,15 @@
   "extends": [
     "github>konflux-ci/mintmaker//config/renovate/renovate.json"
   ],
-  "baseBranches": [
+  "baseBranchPatterns": [
     "master"
   ],
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["\\.tekton/.*\\.yaml$"],
+      "managerFilePatterns": [
+        "/\\.tekton/.*\\.yaml$/"
+      ],
       "matchStrings": [
         "RedHatInsights/konflux-pipelines/raw/v(?<currentValue>[\\d.]+)"
       ],
@@ -20,7 +22,9 @@
   "packageRules": [
     {
       "description": "Disable all npm dependency updates",
-      "matchManagers": ["npm"],
+      "matchManagers": [
+        "npm"
+      ],
       "enabled": false
     }
   ]
